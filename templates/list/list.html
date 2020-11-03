@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="wrapper"></div>
+    {% for task in todos %}
+        <div style="display: flex; justify-content: space-between; margin: 8px; width: 25%">
+            <p style="color: red;">{{ task.title }}</p>
+            <button id="update_task">Update</button>
+        </div>
+
+    {% endfor %}
+    {% load static %}
+    <script type="text/javascript" src={% static '/listCreateScripts/generate.js' %}></script>
+{% endblock %}
