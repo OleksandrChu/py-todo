@@ -1,13 +1,8 @@
 const wrapper = document.getElementById('wrapper');
 
 function render(tasks) {
-    tasks.map(t => wrapper.appendChild(wrapper))
+    tasks.map(t => wrapper.appendChild(template(t)))
 }
-
- // <div style="display: flex; justify-content: space-between; margin: 8px; width: 25%">
- //            <p style="color: red;">{{ task.title }}</p>
- //            <button id="update_task">Update</button>
- //        </div>
 
 function template(task) {
     const div = document.createElement('div');

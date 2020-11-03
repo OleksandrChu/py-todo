@@ -5,9 +5,10 @@
 
     <div id="wrapper"></div>
     {% for task in todos %}
+        <input type="hidden" id="myVar" name="variable" value="{{ task.id }}">
         <div style="display: flex; justify-content: space-between; margin: 8px; width: 25%">
-            <p style="color: red;">{{ task.title }}</p>
-            <button id="update_task">Update</button>
+            <p>{{ task.title }}</p>
+            <p><a href="update/{{ task.id }}">Update</a></p>
         </div>
 
     {% endfor %}

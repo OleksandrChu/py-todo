@@ -5,7 +5,8 @@
 
     <form id="form" action='.'>{% csrf_token %}
         {{ form.as_p }}
-        <input type='submit' value='Save'/>
+
+        <button type='submit'>Save</button>
     </form>
     {% load static %}
      <script type="text/javascript" src={% static '/listCreateScripts/eventhandler.js' %}></script>
