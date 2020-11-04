@@ -7,15 +7,12 @@
         {{ form.as_p }}
         <input type='submit' value='Create'/>
     </form>
-    {% for list in todolists %}
+    {% for task in tasks %}
         <div class="content">
-            <p class="title">
-                <a href="{{ list.id }}">{{ list.title }}</a>
-            </p>
-            <p>
-                <a href="http://127.0.0.1:8000/list/update/{{ list.id }}">Update</a>
-            </p>
+            <p class="title">{{ task.title }}</p>
         </div>
     {% endfor %}
-    <script type="text/javascript" src={% static '/listCreateScripts/generate.js' %}></script>
+    <script type="text/javascript" src={% static '/utils/utils.js' %}></script>
+    <script type="text/javascript" src={% static '/listCreateScripts/createTaskHandler.js' %}></script>
+    <script type="text/javascript" src={% static '/listCreateScripts/constants.js' %}></script>
 {% endblock %}

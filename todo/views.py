@@ -10,6 +10,7 @@ from todo.models import Task
 @csrf_exempt
 def create(request):
     response_body = json.loads(request.body)
+    print(response_body['list_id'])
     task = Task.objects.create(
         title=response_body['title'],
         list_id=response_body['list_id']
@@ -21,11 +22,6 @@ def create(request):
 @csrf_exempt
 def update(request, id):
     Task.objects.update(title=json.loads(request.body)['title'])
-    return build_response(Task.objects.get(id=id))
-
-
-@csrf_exempt
-def get_by_id(request, id):
     return build_response(Task.objects.get(id=id))
 
 
