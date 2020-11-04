@@ -3,7 +3,7 @@ from django import forms
 from list.models import TodoList
 
 
-class ListForm(forms.ModelForm):
+class ListCreateForm(forms.ModelForm):
     title = forms.CharField(label='Title',
                             widget=forms.TextInput(attrs={"placeholder": "eg. Gym training"}))
 

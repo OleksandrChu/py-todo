@@ -2,10 +2,10 @@ import json
 
 from django.core import serializers
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-from list.forms import ListForm, ListUpdateForm
+from list.forms import ListCreateForm, ListUpdateForm
 from list.models import TodoList
 
 
@@ -19,11 +19,11 @@ def todolists_page(request):
 
 
 @csrf_exempt
-def form_page(request):
-    form = ListForm(request.POST or None)
+def create_form(request):
+    form = ListCreateForm(request.POST or None)
     if form.is_valid():
         form.save()
-        form = ListForm()
+        form = ListCreateForm()
     context = {
         'form': form
     }
@@ -43,21 +43,21 @@ def form_update(request, id):
 
 
 @csrf_exempt
-def create(request):
-    todo_list = TodoList.objects.create(title=json.loads(request.body)['title'])
-    todo_list.save()
-    return build_response(TodoList.objects.get(id=todo_list.pk))
-
-
-@csrf_exempt
 def update(request):
     TodoList.objects.filter(id=json.loads(request.body)['id']).update(title=json.loads(request.body)['title'])
     return build_response(TodoList.objects.get(id=json.loads(request.body)['id']))
 
 
-@csrf_exempt
-def get_by_id(request, id):
-    return build_response(TodoList.objects.get(id=id))
+# @csrf_exempt
+# def create(request):
+#     todo_list = TodoList.objects.create(title=json.loads(request.body)['title'])
+#     todo_list.save()
+#     return build_response(TodoList.objects.get(id=todo_list.pk))
+
+#
+# @csrf_exempt
+# def get_by_id(request, id):
+#     return build_response(TodoList.objects.get(id=id))
 
 
 @csrf_exempt
