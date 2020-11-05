@@ -2,11 +2,12 @@ version: 2.1
 
 jobs:
   build-and-test:
-    machine: true
     docker:
       - image: circleci/python:3
     steps:
       - checkout
+      - setup_remote_docker:
+        version: 19.03.13
       - run:
           name: Install dependencies
           command: |
