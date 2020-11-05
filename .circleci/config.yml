@@ -20,8 +20,8 @@ jobs:
           name: Build docker image on test passed
           command: |
             docker build -t todolist-app .
-
 workflows:
+  version: 2.1
   main:
     jobs:
       - build-and-test
