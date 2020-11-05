@@ -12,7 +12,6 @@ jobs:
           name: Test
           command: |
             python manage.py test
-      name: Test
 
 workflows:
   main:
