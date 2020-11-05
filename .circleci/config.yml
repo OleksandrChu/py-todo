@@ -2,6 +2,8 @@ version: 2.1
 
 jobs:
   build-and-test:
+    docker:
+      - image: circleci/python:3
     steps:
       - checkout
       - run:
@@ -13,7 +15,7 @@ jobs:
           command: |
             python manage.py test
 
-#workflows:
-#  main:
-#    jobs:
-#      - build-and-test
+workflows:
+  main:
+    jobs:
+      - build-and-test
