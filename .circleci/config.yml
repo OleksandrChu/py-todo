@@ -3,6 +3,7 @@ version: 2.1
 jobs:
   build-and-test:
     steps:
+      - checkout
       - run:
           name: Install dependencies
           command: |
